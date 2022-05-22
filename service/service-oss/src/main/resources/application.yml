@@ -1,0 +1,34 @@
+server:
+  port: 8206
+spring:
+  application:
+    name: service-oss
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    database: 0
+    timeout: 1800000
+    lettuce:
+      pool:
+        max-active: 20
+        max-wait: -1 #最大阻塞等待时间(负数表示没限制)
+        max-idle: 5
+        min-idle: 0
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+
+# 阿里云oss参数
+aliyun:
+  oss:
+    endpoint: oss-cn-qingdao.aliyuncs.com
+    accessKeyId: LTAI5tKXBYtJCZ2zw3hFnYvV
+    secret: TbjG2COnWLlwl99Ihm1Rv9FE8gfkHV
+    bucket: yyjkfw-liu
+
