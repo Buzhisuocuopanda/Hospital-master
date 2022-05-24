@@ -25,7 +25,7 @@ import java.util.Random;
  * @author smame210
  * @since 2021-08-27
  */
-@Api(tags = "医院设置管理")
+@Api(tags = "商家设置管理")
 @RestController
 @RequestMapping("/admin/hosp/hospitalSet")
 public class HospitalSetController{
@@ -33,7 +33,7 @@ public class HospitalSetController{
     @Autowired
     private IHospitalSetService iHospitalSetService;
 
-    @ApiOperation(value = "获取所有医院设置")
+    @ApiOperation(value = "获取所有商家设置")
     @RequestMapping(value = "findAll", method = RequestMethod.GET)
     public Result findAllHospSet() {
         //调用service的方法
@@ -41,7 +41,7 @@ public class HospitalSetController{
         return Result.ok(list);
     }
 
-    @ApiOperation(value = "逻辑删除医院设置")
+    @ApiOperation(value = "逻辑删除商家设置")
     @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
     public Result removeHospSet(@PathVariable Long id) {
         boolean flag = iHospitalSetService.removeById(id);
@@ -71,7 +71,7 @@ public class HospitalSetController{
         return Result.ok(hospitalSetPage);
     }
 
-    @ApiOperation(value = "添加医院设置")
+    @ApiOperation(value = "添加商家设置")
     @RequestMapping(value = "saveHospSet", method = RequestMethod.POST)
     public Result saveHospSet(@RequestBody HospitalSet hospitalSet){
         Random random = new Random();
@@ -85,14 +85,14 @@ public class HospitalSetController{
         }
     }
 
-    @ApiOperation(value = "通过id获取医院设置")
+    @ApiOperation(value = "通过id获取商家设置")
     @RequestMapping(value = "getHospSet/{id}", method = RequestMethod.GET)
     public Result getHospSet(@PathVariable Long id){
         HospitalSet hospitalSet = iHospitalSetService.getById(id);
         return Result.ok(hospitalSet);
     }
 
-    @ApiOperation(value = "修改医院设置")
+    @ApiOperation(value = "修改商家设置")
     @RequestMapping(value = "updateHospSet", method = RequestMethod.PUT)
     public Result updateHospSet(@RequestBody HospitalSet hospitalSet){
         boolean flag = iHospitalSetService.updateById(hospitalSet);
@@ -111,7 +111,7 @@ public class HospitalSetController{
         return Result.ok();
     }
 
-    @ApiOperation(value = "医院设置锁定和解锁")
+    @ApiOperation(value = "商家设置锁定和解锁")
     @RequestMapping(value = "lockHospSet/{id}/{status}", method = RequestMethod.PUT)
     public Result lockHospSet(@PathVariable Long id,
                               @PathVariable Integer status){

@@ -128,7 +128,7 @@ public class ScheduleServiceImpl implements IScheduleService {
         result.put("bookingScheduleRuleList",bookingScheduleRuleVos.getMappedResults());
         result.put("total",total);
 
-        //获取医院名称
+        //获取商家名称
         String hosName = iHospitalService.getByHoscode(hoscode).getHosname();
         //其他基础数据
         Map<String, String> baseMap = new HashMap<>();
@@ -177,7 +177,7 @@ public class ScheduleServiceImpl implements IScheduleService {
         );
         AggregationResults<BookingScheduleRuleVo> bookingScheduleRuleVos = mongoTemplate.aggregate(aggregation1, Schedule.class, BookingScheduleRuleVo.class);
 
-        //获取科室剩余预约数
+        //获取服务剩余预约数
         List<BookingScheduleRuleVo> scheduleRuleVoList = bookingScheduleRuleVos.getMappedResults();
         Map<Date, BookingScheduleRuleVo> scheduleVoMap = new HashMap<>();
         if(!CollectionUtils.isEmpty(scheduleRuleVoList)) {
@@ -195,7 +195,7 @@ public class ScheduleServiceImpl implements IScheduleService {
                 bookingScheduleRuleVo = new BookingScheduleRuleVo();
                 //就诊医生人数
                 bookingScheduleRuleVo.setDocCount(0);
-                //科室剩余预约数  -1表示无号
+                //服务剩余预约数  -1表示无号
                 bookingScheduleRuleVo.setAvailableNumber(-1);
             }
             bookingScheduleRuleVo.setWorkDate(date);
@@ -226,13 +226,13 @@ public class ScheduleServiceImpl implements IScheduleService {
         result.put("total", datePage.getTotal());
         //其他基础数据
         Map<String, String> baseMap = new HashMap<>();
-        //医院名称
+        //商家名称
         baseMap.put("hosname", iHospitalService.getByHoscode(hoscode).getHosname());
-        //科室
+        //服务
         Department department = iDepartmentService.getDepartment(hoscode, depcode);
-        //大科室名称
+        //大服务名称
         baseMap.put("bigname", department.getBigname());
-        //科室名称
+        //服务名称
         baseMap.put("depname", department.getDepname());
         //月
         baseMap.put("workDateString", new DateTime().toString("yyyy年MM月"));
@@ -347,14 +347,14 @@ public class ScheduleServiceImpl implements IScheduleService {
 
     /**
      *
-     * 封装排班详情其他值 医院名称、科室名称、日期对应星期
+     * 封装排班详情其他值 商家名称、服务名称、日期对应星期
      * @param: [item]
      * @return: void
      */
     private void setSchedule(Schedule schedule) {
-        //设置医院名称
+        //设置商家名称
         schedule.getParam().put("hosname",iHospitalService.getByHoscode(schedule.getHoscode()).getHosname());
-        //设置科室名称
+        //设置服务名称
         schedule.getParam().put("depname",iDepartmentService.getDepartment(schedule.getHoscode(),schedule.getDepcode()).getDepname());
         //设置日期对应星期
         schedule.getParam().put("dayOfWeek",this.getDayOfWeek(new DateTime(schedule.getWorkDate())));

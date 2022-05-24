@@ -19,7 +19,7 @@ spring:
     time-zone: GMT+8
 
   redis:
-    host: 127.0.0.1
+    host: 192.168.18.133
     port: 6379
     database: 0
     timeout: 1800000
@@ -33,7 +33,7 @@ spring:
 data:
   mongodb:
     #           uri: mongodb://192.168.92.129:27017/yygh_hosp?authSource=admin&authMechanism=SCRAM-SHA-1
-    uri: mongodb://admin:123456@192.168.92.129:27017/yygh_hosp?authSource=admin&authMechanism=SCRAM-SHA-1
+    uri: mongodb://admin:123456@192.168.18.133:27017/yygh_hosp?authSource=admin&authMechanism=SCRAM-SHA-1
     auto-index-creation: false
   #      database: yygh_hosp
   #      host: 192.168.92.129

@@ -23,7 +23,7 @@ import javax.crypto.Mac;
 import java.util.List;
 import java.util.Map;
 
-@Api(tags = "医院管理接口")
+@Api(tags = "商家管理接口")
 @RestController
 @RequestMapping("/api/hosp/hospital")
 public class HospitalApiController {
@@ -50,21 +50,21 @@ public class HospitalApiController {
     }
 
 
-    @ApiOperation(value = "根据医院名称获取医院列表")
+    @ApiOperation(value = "根据商家名称获取商家列表")
     @RequestMapping(value = "findByHosname/{hosname}", method = RequestMethod.GET)
     public Result findByHosname(@PathVariable String hosname){
         List<Hospital> hospitalList = iHospitalService.findByHosname(hosname);
         return Result.ok(hospitalList);
     }
 
-    @ApiOperation(value = "获取科室列表")
+    @ApiOperation(value = "获取服务列表")
     @RequestMapping(value = "department/{hoscode}", method = RequestMethod.GET)
     public Result getDepList(@PathVariable String hoscode){
         List<DepartmentVo> deptTree = iDepartmentService.findDeptTree(hoscode);
         return Result.ok(deptTree);
     }
 
-    @ApiOperation(value = "医院预约挂号详情")
+    @ApiOperation(value = "商家预约挂号详情")
     @RequestMapping(value = "booking/{hoscode}", method = RequestMethod.GET)
     public Result getBooking(@PathVariable String hoscode){
         Hospital hospital = iHospitalService.getByHoscode(hoscode);
@@ -103,7 +103,7 @@ public class HospitalApiController {
         return iScheduleService.getScheduleOrderVo(scheduleId);
     }
 
-    @ApiOperation(value = "获取医院签名信息")
+    @ApiOperation(value = "获取商家签名信息")
     @GetMapping("inner/getSignInfoVo/{hoscode}")
     public SignInfoVo getSignInfoVo(@PathVariable("hoscode") String hoscode) {
         return iHospitalSetService.getSignInfoVo(hoscode);

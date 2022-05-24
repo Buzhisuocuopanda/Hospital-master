@@ -12,10 +12,10 @@ import java.util.Date;
 @ApiModel(description = "Schedule")
 public class ScheduleOrderVo {
 
-	@ApiModelProperty(value = "医院编号")
+	@ApiModelProperty(value = "商家编号")
 	private String hoscode;
 
-	@ApiModelProperty(value = "医院名称")
+	@ApiModelProperty(value = "商家名称")
 	private String hosname;
 
 	@ApiModelProperty(value = "科室编号")
@@ -24,10 +24,10 @@ public class ScheduleOrderVo {
 	@ApiModelProperty(value = "科室名称")
 	private String depname;
 
-	@ApiModelProperty(value = "排班编号（医院自己的排班主键）")
+	@ApiModelProperty(value = "排班编号（商家自己的排班主键）")
 	private String hosScheduleId;
 
-	@ApiModelProperty(value = "医生职称")
+	@ApiModelProperty(value = "技师职称")
 	private String title;
 
 	@ApiModelProperty(value = "安排日期")
@@ -39,7 +39,7 @@ public class ScheduleOrderVo {
 	@ApiModelProperty(value = "安排时间（0：上午 1：下午）")
 	private Integer reserveTime;
 
-	@ApiModelProperty(value = "医事服务费")
+	@ApiModelProperty(value = "预约服务费")
 	private BigDecimal amount;
 
 	@ApiModelProperty(value = "退号时间")

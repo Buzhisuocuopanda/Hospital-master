@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Api(tags = "科室管理")
+@Api(tags = "服务管理")
 @RestController
 @RequestMapping("/admin/hosp/department")
 public class DepartmentController {
@@ -18,7 +18,7 @@ public class DepartmentController {
     @Autowired
     private IDepartmentService iDepartmentService;
 
-    @ApiOperation(value = "查询医院所有科室列表")
+    @ApiOperation(value = "查询商家所有服务列表")
     @RequestMapping(value = "getDeptList/{hoscode}", method = RequestMethod.GET)
     public Result getDeptList(@PathVariable String hoscode){
         List<DepartmentVo> list = iDepartmentService.findDeptTree(hoscode);

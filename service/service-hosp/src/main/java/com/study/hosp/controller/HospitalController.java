@@ -28,7 +28,7 @@ public class HospitalController {
         return Result.ok(page);
     }
 
-    @ApiOperation(value = "更新医院状态")
+    @ApiOperation(value = "更新商家状态")
     @RequestMapping(value = "updateStatus/{id}/{status}", method = RequestMethod.PUT)
     public Result updateStatus(@PathVariable String id,
                                @PathVariable Integer status){
@@ -36,7 +36,7 @@ public class HospitalController {
         return Result.ok();
     }
 
-    @ApiOperation(value = "获取医院详情")
+    @ApiOperation(value = "获取商家详情")
     @RequestMapping(value = "show/{id}", method = RequestMethod.GET)
     public Result showById(@PathVariable String id){
         Hospital hospital = iHospitalService.getHospById(id);

@@ -103,7 +103,7 @@ public class HospitalServiceImpl implements IHospitalService {
 
     /**
      *
-     * 对findPage的结果重新封装，即添加医院类型，省市区代码在数据字典中的中文名称
+     * 对findPage的结果重新封装，即添加商家类型，省市区代码在数据字典中的中文名称
      * 结果保存在Map<String,Object> param中
      */
     private Page<Hospital> setPage(Page<Hospital> page){

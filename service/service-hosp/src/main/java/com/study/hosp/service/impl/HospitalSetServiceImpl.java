@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 
 /**
  * <p>
- * 医院信息设置表 服务实现类
+ * 商家信息设置表 服务实现类
  * </p>
  *
  * @author smame210

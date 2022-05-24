@@ -4,7 +4,6 @@ server:
 spring:
   application:
     name: service-task
-
   profiles:
     active: dev
 
@@ -13,7 +12,8 @@ spring:
     time-zone: GMT+8
 
   redis:
-    host: 127.0.0.1
+    host: 192.168.18.133
+
     port: 6379
     database: 0
     timeout: 1800000
@@ -31,7 +31,7 @@ spring:
 
   #rabbitmq地址
   rabbitmq:
-    host: 192.168.92.129
+    host: 192.168.18.133
     port: 5672
     username: guest
     password: guest

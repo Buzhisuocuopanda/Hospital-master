@@ -74,14 +74,14 @@ public class DepartmentServiceImpl implements IDepartmentService {
         department.setHoscode(hoscode);
         Example<Department> example = Example.of(department);
         List<Department> departments = departmentRepository.findAll(example);
-        //根据大科室分组
+        //根据大服务分组
         Map<String, List<Department>> collect = departments.stream().collect(Collectors.groupingBy(Department::getBigcode));
         for (Map.Entry<String,List<Department>> entry : collect.entrySet()) {
             DepartmentVo departmentVo = new DepartmentVo();
             departmentVo.setDepcode(entry.getKey());
             List<Department> value = entry.getValue();
             departmentVo.setDepname(value.get(0).getBigname());
-            //封装小科室
+            //封装小服务
             List<DepartmentVo> children = new ArrayList<>();
             value.forEach(item -> {
                 DepartmentVo child = new DepartmentVo();

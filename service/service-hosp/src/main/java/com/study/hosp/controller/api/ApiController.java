@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
-@Api(tags = "医院管理API接口")
+@Api(tags = "商家管理API接口")
 @RestController
 @RequestMapping("/api/hosp")
 public class ApiController {
@@ -43,15 +43,15 @@ public class ApiController {
     @Autowired
     private IHospitalSetService iHospitalSetService;
 
-    @ApiOperation(value = "上传医院")
+    @ApiOperation(value = "上传商家")
     @RequestMapping(value = "saveHospital", method = RequestMethod.POST)
     public Result saveHospital(HttpServletRequest request){
         Map<String, String[]> parameterMap = request.getParameterMap();
         Map<String, Object> map = HttpRequestHelper.switchMap(parameterMap);
 
-        //1 获取医院系统传递过来的签名,签名进行MD5加密
+        //1 获取商家系统传递过来的签名,签名进行MD5加密
         String hospSign = (String)map.get("sign");
-        //2 根据传递过来医院编码，查询数据库，查询签名
+        //2 根据传递过来商家编码，查询数据库，查询签名
         String hoscode = (String)map.get("hoscode");
         String signKey = iHospitalSetService.getSignKey(hoscode);
         //3 把数据库查询签名进行MD5加密
@@ -69,15 +69,15 @@ public class ApiController {
         return Result.ok();
     }
 
-    @ApiOperation(value = "获取医院信息")
+    @ApiOperation(value = "获取商家信息")
     @RequestMapping(value = "hospital/show", method = RequestMethod.POST)
     public Result hospitalShow(HttpServletRequest request){
         Map<String, String[]> parameterMap = request.getParameterMap();
         Map<String, Object> map = HttpRequestHelper.switchMap(parameterMap);
 
-        //1 获取医院系统传递过来的签名,签名进行MD5加密
+        //1 获取商家系统传递过来的签名,签名进行MD5加密
         String hospSign = (String)map.get("sign");
-        //2 根据传递过来医院编码，查询数据库，查询签名
+        //2 根据传递过来商家编码，查询数据库，查询签名
         String hoscode = (String)map.get("hoscode");
         String signKey = iHospitalSetService.getSignKey(hoscode);
         //3 把数据库查询签名进行MD5加密
@@ -91,15 +91,15 @@ public class ApiController {
         return Result.ok(hospital);
     }
 
-    @ApiOperation(value = "上传科室")
+    @ApiOperation(value = "上传服务")
     @RequestMapping(value = "saveDepartment", method = RequestMethod.POST)
     public Result saveDepartment(HttpServletRequest request){
         Map<String, String[]> parameterMap = request.getParameterMap();
         Map<String, Object> map = HttpRequestHelper.switchMap(parameterMap);
 
-        //1 获取医院系统传递过来的签名,签名进行MD5加密
+        //1 获取商家系统传递过来的签名,签名进行MD5加密
         String hospSign = (String)map.get("sign");
-        //2 根据传递过来医院编码，查询数据库，查询签名
+        //2 根据传递过来商家编码，查询数据库，查询签名
         String hoscode = (String)map.get("hoscode");
         String signKey = iHospitalSetService.getSignKey(hoscode);
         //3 把数据库查询签名进行MD5加密
@@ -113,7 +113,7 @@ public class ApiController {
         return Result.ok();
     }
 
-    @ApiOperation(value = "查询科室")
+    @ApiOperation(value = "查询服务")
     @RequestMapping(value = "department/list", method = RequestMethod.POST)
     public Result departmentShow(HttpServletRequest request){
         Map<String, String[]> parameterMap = request.getParameterMap();
@@ -131,7 +131,7 @@ public class ApiController {
         return Result.ok(pageModel);
     }
 
-    @ApiOperation(value = "删除科室")
+    @ApiOperation(value = "删除服务")
     @RequestMapping(value = "department/remove", method = RequestMethod.POST)
     public Result departmentRemove(HttpServletRequest request){
         Map<String, String[]> parameterMap = request.getParameterMap();
@@ -152,9 +152,9 @@ public class ApiController {
         Map<String, String[]> parameterMap = request.getParameterMap();
         Map<String, Object> map = HttpRequestHelper.switchMap(parameterMap);
 
-        //1 获取医院系统传递过来的签名,签名进行MD5加密
+        //1 获取商家系统传递过来的签名,签名进行MD5加密
         String hospSign = (String)map.get("sign");
-        //2 根据传递过来医院编码，查询数据库，查询签名
+        //2 根据传递过来商家编码，查询数据库，查询签名
         String hoscode = (String)map.get("hoscode");
         String signKey = iHospitalSetService.getSignKey(hoscode);
         //3 把数据库查询签名进行MD5加密

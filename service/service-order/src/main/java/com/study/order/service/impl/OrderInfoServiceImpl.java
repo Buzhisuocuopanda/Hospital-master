@@ -91,7 +91,7 @@ public class OrderInfoServiceImpl extends ServiceImpl<OrderInfoMapper, OrderInfo
         orderInfo.setOrderStatus(OrderStatusEnum.UNPAID.getStatus());
         baseMapper.insert(orderInfo);
 
-        //调用医院管理接口 hospital-manager 实现下单
+        //调用商家管理接口 hospital-manager 实现下单
         Map<String, Object> map = this.setOrderMap(orderInfo, patient, signInfoVo);
         //注意把hospital_set表中对应记录的url设置为http://localhost:9998
         JSONObject result = HttpRequestHelper.sendRequest(map, signInfoVo.getApiUrl() + "/order/submitOrder");
@@ -174,7 +174,7 @@ public class OrderInfoServiceImpl extends ServiceImpl<OrderInfoMapper, OrderInfo
     @Override
     public IPage<OrderInfo> selectPage(Page<OrderInfo> pageParam, OrderQueryVo orderQueryVo) {
         //orderQueryVo获取条件值
-        String name = orderQueryVo.getKeyword(); //医院名称
+        String name = orderQueryVo.getKeyword(); //商家名称
         Long patientId = orderQueryVo.getPatientId(); //就诊人名称
         String patientName = orderQueryVo.getPatientName(); //就诊人名称
         String orderStatus = orderQueryVo.getOrderStatus(); //订单状态
